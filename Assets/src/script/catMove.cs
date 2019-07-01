@@ -8,7 +8,7 @@ public class catMove : MonoBehaviour {
     int[] chairType
         = { 1, 3, 4, 2, 3, 1, 3, 4, 1, 4, 2, 4, 2 };
     int[] catLayer
-        = {31,35,39,35,23,19,27,27,23,17,13,7,3};
+        = {31,35,41,37,23,19,27,27,23,17,13,7,3};
     int chairNum;
 
     public bool drink = false;
@@ -22,7 +22,7 @@ new SpriteRenderer renderer;
         this.gameDirector = GameObject.Find("gameDirector");
         this.animator = GetComponent<Animator>();
         this.renderer = GetComponent<SpriteRenderer>();
-        this.chairNum = Random.Range(1,9);
+        this.chairNum = 5;// Random.Range(1,9);
         while(gameDirector.GetComponent<gameDirector>().isOccupied[chairNum] == true) this.chairNum = Random.Range(1,9);
         gameDirector.GetComponent<gameDirector>().isOccupied[chairNum] = true;
     }
@@ -119,7 +119,7 @@ new SpriteRenderer renderer;
     public void walk(int orientation, int layer) { // left = -1, right = 1
         renderer.sortingOrder = layer;
         renderer.flipX = orientation>0?true: false;
-        transform.Translate(new Vector2(orientation*0.02f, -0.01f));
+        transform.Translate(new Vector2(orientation*0.01f, -0.005f));
     }
     public void sitDown(float orientation, int layer) { // left = -1, right = 1
         renderer.sortingOrder = layer;
