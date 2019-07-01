@@ -8,11 +8,12 @@ public class catMove : MonoBehaviour {
     int[] chairType
         = { 1, 3, 4, 2, 3, 1, 3, 4, 1, 4, 2, 4, 2 };
     int[] catLayer
-        = {31,35,41,37,23,19,27,27,23,17,13,7,3};
+        = {25,29,39,35, 9,5,19,19,15,17,13,7,3};
     int chairNum;
 
     public bool drink = false;
     public bool walking = true;
+    bool forward = true;
     Animator animator;
     GameObject gameDirector;
 new SpriteRenderer renderer;
@@ -52,63 +53,77 @@ new SpriteRenderer renderer;
             }
         } 
         else if (walking) {
-            switch (chairNum) {
+            switch (chairNum) { // start pos = 1.8, 2.3
                 case 1:
-                    if (transform.position.y > -0.2f) walk(1, 0);
+                    if (transform.position.y > 1.5f) walk(1, -1, 0);
+                    else if (transform.position.y > -0.1f) walk(1, 1, 0);
+                    else if (transform.position.y > -0.4f) walk(1, -1, 21);
+                    else if (transform.position.y > -0.5f) walk(1, 1, 21);
                     else drink = true;
                     break;
                 case 2:
-                    if (transform.position.y > -0.2f) walk(1, 0);
-                    else if (transform.position.y > -1.2f) walk(-1, 27);
-                    else if (transform.position.y > -1.3f) walk(1, 27);
+                    if (transform.position.y > 1.5f) walk(1, -1, 0);
+                    else if (transform.position.y > -0.2f) walk(1, 1, 0);
+                    else if (transform.position.y > -1.4f) walk(1, -1, 21);
+                    else if (transform.position.y > -1.5f) walk(1, 1, 21);
                     else drink = true;
                     break;
                 case 3:
-                    if (transform.position.y > -0.2f) walk(1, 0);
-                    else if (transform.position.y > -1.6f) walk(-1, 27);
-                    else if (transform.position.y > -1.9f) walk(1, 37);
-                    else if (transform.position.y > -2.2f) walk(-1, 37);
+                    if (transform.position.y > 1.5f) walk(1, -1, 0);
+                    else if (transform.position.y > -0.2f) walk(1, 1, 0);
+                    else if (transform.position.y > -1.9f) walk(1, -1, 21);
+                    else if (transform.position.y > -2.2f) walk(1, 1, 31);
+                    else if (transform.position.y > -2.3f) walk(1, -1, 31);
                     else drink = true;
                     break;
                 case 4:
-                    if (transform.position.y > 0.5f) walk(-1, 0);
-                    else if (transform.position.y > 0.1f) walk(1, 0);
-                    else if (transform.position.y > -0.50f) walk(-1, 25);
-                    else if (transform.position.y > -1.1f) walk(1, 30);
-                    else if (transform.position.y > -1.2f) walk(-1, 30);
+                    if (transform.position.y > 0.6f) walk(1, -1, 0);
+                    else if (transform.position.y > 0f) walk(1, 1, 0);
+                    else if (transform.position.y > -0.6f) walk(1, -1, 11);
+                    else if (transform.position.y > -1.2f) walk(1, 1, 31);
+                    else if (transform.position.y > -1.3f) walk(1, -1, 31);
                     else drink = true;
                     break;
                 case 5:
-                    if (transform.position.y > 0.5f) walk(-1, 0);
-                    else if (transform.position.y > 0.1f) walk(1, 0);
-                    else if (transform.position.y > -1.2f) walk(-1, 25);
+                    if (forward) {
+                        if (transform.position.y > 0.5f) walk(1, -1, 0);
+                        else if (transform.position.y > -0.1f) walk(1, 1, 0);
+                        else if (transform.position.y > -0.7f) walk(1, -1, 11);
+                        else if (transform.position.y > -0.9f) walk(1, 1, 21);
+                        else if (transform.position.y > -1.6f) walk(1, -1, 21);
+                        else forward = false;
+                    } else if (transform.position.y < -1.5f) walk(-1, -1, 11);
                     else drink = true;
                     break;
                 case 6:
-                    if (transform.position.y > 0.5f) walk(-1, 0);
-                    else if (transform.position.y > 0.1f) walk(1, 0);
-                    else if (transform.position.y > -0.3f) walk(-1, 25);
+                    if (forward) {
+                        if (transform.position.y > 0.5f) walk(1, -1, 0);
+                        else if (transform.position.y > -0.1f) walk(1, 1, 0);
+                        else if (transform.position.y > -0.5f) walk(1, -1, 11);
+                        else forward = false;
+                    } else if (transform.position.y < -0.4f) walk(-1, -1, 11);
                     else drink = true;
                     break;
                 case 7:
-                    if (transform.position.y > 0.5f) walk(-1, 0);
-                    else if (transform.position.y > 0.1f) walk(1, 0);
-                    else if (transform.position.y > -0.1f) walk(-1, 0);
-                    else if (transform.position.y > -0.3f) walk(1, 0);
+                    if (transform.position.y > 0.5f) walk(1, -1, 0);
+                    else if (transform.position.y > 0f) walk(1, 1, 0);
+                    else if (transform.position.y > -0.2f) walk(1, -1, 0);
+                    else if (transform.position.y > -0.3f) walk(1, 1, 0);
                     else drink = true;
                     break;
                 case 8:
-                    if (transform.position.y > 0.2f) walk(1, 0);
-                    else if (transform.position.y > -0.4f) walk(-1, 0);
+                    if (transform.position.y > 1.5f) walk(1, -1, 0);
+                    else if (transform.position.y > 0.2f) walk(1, 1, 0);
+                    else if (transform.position.y > -0.4f) walk(1, -1, 15);
                     else drink = true;
                     break;
                 case 9:
-                    if (transform.position.y > 1.1f) walk(-1, 0);
-                    else if (transform.position.y > 0.7f) walk(1, 0);
+                    if (transform.position.y > 1.1f) walk(1, -1, 0);
+                    else if (transform.position.y > 0.7f) walk(1,1, 0);
                     else drink = true;
                     break;
                 default:
-                    if (transform.position.y > -0.2f) walk(1, 0);
+                    if (transform.position.y > -0.2f) walk(1,1, 0);
                     else drink = true; break;
             }
         } else {
@@ -116,10 +131,11 @@ new SpriteRenderer renderer;
         }
     }
 
-    public void walk(int orientation, int layer) { // left = -1, right = 1
+    public void walk(int face, int orientation, int layer) { // front/back, right/left
+        if (face < 0) animator.SetTrigger("walk_back");
         renderer.sortingOrder = layer;
         renderer.flipX = orientation>0?true: false;
-        transform.Translate(new Vector2(orientation*0.01f, -0.005f));
+        transform.Translate(new Vector2(orientation*0.01f, -face*0.005f));
     }
     public void sitDown(float orientation, int layer) { // left = -1, right = 1
         renderer.sortingOrder = layer;
