@@ -60,9 +60,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\script\catMove.cs" />
-    <Compile Include="Assets\script\gameDirector.cs" />
-    <Compile Include="Assets\script\swipe.cs" />
+    <Compile Include="Assets\src\script\catMove.cs" />
+    <Compile Include="Assets\src\script\gameDirector.cs" />
+    <Compile Include="Assets\src\script\swipe.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/dev/studioWash/cafeONyang/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
