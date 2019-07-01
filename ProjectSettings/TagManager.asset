@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: background
+    uniqueID: 2920886545
+    locked: 0
+  - name: groundandwall
+    uniqueID: 1935255883
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
