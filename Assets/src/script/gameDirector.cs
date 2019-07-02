@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class gameDirector : MonoBehaviour
-{
+public class gameDirector : MonoBehaviour {
     GameObject cat;
     SpriteRenderer catImage;
     int exitCountValue = 0;
-    public bool[] isOccupied = { false, false, false, false, false, false, false, false, false, false, false, false, false };
+    public int seatCnt = 9; // total available seat num
+    public List<bool> isOccupied;
+    public int emptySeatCnt;
 
     // Start is called before the first frame update
     void Start() {
-        cat = GameObject.Find("cat");
+        isOccupied = new List<bool>();
+        for (int i = 0; i < seatCnt; i++) isOccupied.Add(false);
+        emptySeatCnt = seatCnt;
     }
 
     // Update is called once per frame
     void Update() {
+        Debug.Log(emptySeatCnt);
         if (Input.GetKeyUp(KeyCode.Escape)) {
             exitCountValue++;
             if (!IsInvoking("disable_DoubleClick")) Invoke("disable_DoubleClick", 0.3f);

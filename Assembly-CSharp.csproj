@@ -61,8 +61,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\src\script\cameraMove.cs" />
+    <Compile Include="Assets\src\script\catGenerator.cs" />
     <Compile Include="Assets\src\script\catMove.cs" />
     <Compile Include="Assets\src\script\gameDirector.cs" />
+    <Compile Include="Assets\src\script\sceneController.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/dev/studioWash/cafeONyang/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

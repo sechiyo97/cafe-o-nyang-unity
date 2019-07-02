@@ -9,7 +9,7 @@ public class cameraMove : MonoBehaviour {
     const int MAX_Y = 5;
     const int MIN_Y = -5;
     const float fscale = 0.01f;
-    const float zoomSpeed = 0.03f;
+    const float zoomSpeed = 0.01f;
 
     Camera cam;
 
