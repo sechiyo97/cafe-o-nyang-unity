@@ -20,7 +20,7 @@ public class gameDirector : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        Debug.Log(emptySeatCnt);
+        //Debug.Log(emptySeatCnt);
         if (Input.GetKeyUp(KeyCode.Escape)) {
             exitCountValue++;
             if (!IsInvoking("disable_DoubleClick")) Invoke("disable_DoubleClick", 0.3f);

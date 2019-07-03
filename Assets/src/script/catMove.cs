@@ -1,25 +1,40 @@
 ﻿using UnityEngine;
 
 public class catMove : MonoBehaviour {
+
+    // variables for coming and going
     float[,] chairOnPos
         = { { 3.78f, -0.44f }, { 1.84f, -1.45f }, { 0.12f, -2.44f }, { -1.8f, -1.38f }
         , { -3.84f, -0.81f }, { -1.91f, 0.3f }, { -0.5f, -0.37f }, { 1.26f, -0.37f } , { 1.45f, 0.72f }
-        , { -3.95f, 2.33f }, { -5.85f, 3.41f }, { -2.04f, 3.49f }, { -3.9f, 4.57f }  }; // 수정 필요
+        , { -3.95f, 2.33f }, { -5.85f, 3.41f }, { -2.04f, 3.49f }, { -3.9f, 4.57f }  }; // coming start point
     float[,] chairOffPos
         = { { 2.98f, -0.31f }, { 1.5f, -1.59f }, { 0.69f, -2.25f }, { -1.05f, -1.58f }
         , { -3.02f, -1.56f }, { -1.42f, -0.49f }, { -0.82f, -0.45f }, { 1.72f, -0.45f } , { 0.72f, 0.47f }
-        , { -3.95f, 2.33f }, { -5.85f, 3.41f }, { -1.73f, 0.33f }, { -3.9f, 4.57f }  }; // 수정 필요
+        , { -3.95f, 2.33f }, { -5.85f, 3.41f }, { -1.73f, 0.33f }, { -3.9f, 4.57f }  }; // going start point
     int[] chairType
         = { 1, 3, 4, 2, 3, 1, 3, 4, 1, 4, 2, 4, 2 };
     int[] catLayer
         = {25,29,39,35, 9,5,19,19,15,17,13,7,3};
+
+    // walk speed
+    float walkSpeedY = 0.005f;
+    float walkSpeedX = 0.01f;
+
+    // which chair to sit
     int chairNum;
 
     // 4 status of cat: coming, waiting, eating, going
     public int status = 1;
 
+    // checkers
     bool arrive = false;
     bool forward = true;
+
+    // time delay for waiting&eating
+    int waitTime = 5;
+    int eatTime = 5;
+
+    // tools
     Animator animator;
     GameObject gameDirector;
     new SpriteRenderer renderer;
@@ -43,6 +58,11 @@ public class catMove : MonoBehaviour {
             case 3: eating(); break;
             case 4: going(); break;
         }
+    }
+
+    void OnClick()
+    {
+
     }
 
     // coming to a seat
@@ -134,10 +154,10 @@ public class catMove : MonoBehaviour {
         } 
     }
     void waiting() {
-        Invoke("startEating", 3); // 2초뒤 LaunchProjectile함수 호출
+        Invoke("startEating", waitTime); // call startEating function after given time
     }
     void eating() {
-        Invoke("startGoing", 3); // 2초뒤 LaunchProjectile함수 호출
+        Invoke("startGoing", eatTime); // call startEating function after given time
     }
     void going() {
         if (arrive) { standUp(1.0f, catLayer[chairNum - 1]); arrive = false; }
@@ -225,7 +245,7 @@ public class catMove : MonoBehaviour {
         else animator.SetTrigger("walk_front");
         renderer.sortingOrder = layer;
         renderer.flipX = orientation>0?true: false;
-        transform.Translate(new Vector2(orientation*0.01f, -face*0.005f));
+        transform.Translate(new Vector2(orientation*walkSpeedX, -face*walkSpeedY));
     }
     public void sitDown(int face, float orientation, int layer) { // left = -1, right = 1
         animator.ResetTrigger("walk_front");
