@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class catMove : MonoBehaviour {
+public class CatController : MonoBehaviour {
 
     // variables for coming and going
     float[,] chairOnPos
@@ -22,6 +22,8 @@ public class catMove : MonoBehaviour {
 
     // which chair to sit
     int chairNum;
+    int chairFace;
+    int chairOrient;
 
     // 4 status of cat: coming, waiting, eating, going
     public int status = 1;
@@ -48,6 +50,11 @@ public class catMove : MonoBehaviour {
         while(gameDirector.GetComponent<gameDirector>().isOccupied[chairNum-1] == true) this.chairNum = Random.Range(1,10);
         gameDirector.GetComponent<gameDirector>().isOccupied[chairNum-1] = true;
         gameDirector.GetComponent<gameDirector>().emptySeatCnt--;
+
+        chairFace = ((chairType[chairNum - 1] - 1) / 2);
+        chairFace = 1 - chairFace * 2;
+
+        chairOrient = ((chairType[chairNum - 1]) % 2 == 1) ? -1 : 1;
     }
 
     // Update is called once per frame
@@ -60,15 +67,8 @@ public class catMove : MonoBehaviour {
         }
     }
 
-    void OnClick()
-    {
-
-    }
-
     // coming to a seat
     void coming() {
-        int face = ((chairType[chairNum - 1]-1) / 2);
-        face = 1-face*2;
         if (arrive) { // if sit down, go to next state(2, waiting)
             switch (chairType[chairNum - 1]) {
                 case 1: renderer.flipX = false; break;
@@ -76,7 +76,6 @@ public class catMove : MonoBehaviour {
                 case 3: renderer.flipX = false; break;
                 case 4: renderer.flipX = true; break;
             }
-            sitDown(face, 1.0f, catLayer[chairNum - 1]);
             Invoke("startWaiting", 0);
             return;
         } else { // else, move to a seat
@@ -154,9 +153,11 @@ public class catMove : MonoBehaviour {
         } 
     }
     void waiting() {
+        sitDown(chairFace, chairOrient, catLayer[chairNum - 1]);
         Invoke("startEating", waitTime); // call startEating function after given time
     }
     void eating() {
+        sitDown(chairFace, chairOrient, catLayer[chairNum - 1]);
         Invoke("startGoing", eatTime); // call startEating function after given time
     }
     void going() {
@@ -256,8 +257,10 @@ public class catMove : MonoBehaviour {
         Vector3 pos = transform.position;
         pos.x = chairOnPos[chairNum - 1, 0]; pos.y = chairOnPos[chairNum - 1, 1];
         transform.position = pos;
+        renderer.flipX = orientation > 0 ? true : false;
     }
     public void standUp(float orientation, int layer) { // left = -1, right = 1
+        Debug.Log("standing up");
         renderer.sortingOrder = layer;
         Vector3 pos = transform.position;
         pos.x = chairOffPos[chairNum - 1, 0]; pos.y = chairOffPos[chairNum - 1, 1];
@@ -267,11 +270,15 @@ public class catMove : MonoBehaviour {
     public void startEating() { status = 3; }
     public void startGoing() {
         status = 4;
-        animator.SetTrigger("walk_back");
     }
     public void gone() {
-        gameDirector.GetComponent<gameDirector>().isOccupied[chairNum-1] = false;
+        gameDirector.GetComponent<gameDirector>().isOccupied[chairNum - 1] = false;
         gameDirector.GetComponent<gameDirector>().emptySeatCnt++;
         Destroy(this.gameObject);
+    }
+
+    public void infoPopup() {
+        GameObject catInfoPopup = GameObject.Find("catInfoPopup");
+        if(catInfoPopup) catInfoPopup.SetActive(true);
     }
 }
