@@ -17,8 +17,11 @@ public class gameDirector : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        // inactivate popups
+        /* later...
         catInfoPopup = GameObject.Find("catInfoPopup");
         catInfoPopup.SetActive(false);
+        */
         isOccupied = new List<bool>();
         for (int i = 0; i < seatCnt; i++) isOccupied.Add(false);
         emptySeatCnt = seatCnt;
@@ -54,10 +57,11 @@ public class gameDirector : MonoBehaviour {
             if (hit && !uiOpen) {
                 Debug.Log(hit.collider.name);
                 GameObject target = hit.collider.gameObject;
-                target.GetComponent<CatController>().infoPopup();
 
+                /* deprecated
+                target.GetComponent<CatController>().infoPopup();
                 uiOpen = true; uiClosedFlag = false;
-                catInfoPopup.SetActive(true);
+                catInfoPopup.SetActive(true);*/
             } else if (uiClosedFlag) { uiOpen = false; }
         }
     }

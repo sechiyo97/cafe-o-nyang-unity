@@ -5,7 +5,7 @@ using UnityEngine;
 public class catGenerator : MonoBehaviour {
 
     GameObject gameDirector;
-    public GameObject catPrefab;
+    public GameObject[] catPrefab;
     float span = 5.0f; // time for new cat
     float delta = 0;
 
@@ -20,7 +20,7 @@ public class catGenerator : MonoBehaviour {
         this.delta += Time.deltaTime;
         if (this.delta > this.span && gameDirector.GetComponent<gameDirector>().emptySeatCnt > 0) {
             this.delta = 0;
-            GameObject go = Instantiate(catPrefab) as GameObject;
+            GameObject go = Instantiate(catPrefab[Random.Range(0,2)]) as GameObject;
             go.transform.position = new Vector3(1.6f, 2.2f, 0);
         }
     }

@@ -240,8 +240,8 @@ public class CatController : MonoBehaviour {
     }
 
     public void walk(int face, int orientation, int layer) { // front/back, right/left
-        animator.ResetTrigger("drink_front");
-        animator.ResetTrigger("drink_back");
+        animator.ResetTrigger("sit_front");
+        animator.ResetTrigger("sit_back");
         if (face < 0) animator.SetTrigger("walk_back");
         else animator.SetTrigger("walk_front");
         renderer.sortingOrder = layer;
@@ -251,8 +251,8 @@ public class CatController : MonoBehaviour {
     public void sitDown(int face, float orientation, int layer) { // left = -1, right = 1
         animator.ResetTrigger("walk_front");
         animator.ResetTrigger("walk_back");
-        if (face < 0) animator.SetTrigger("drink_back");
-        else animator.SetTrigger("drink_front");
+        if (face < 0) animator.SetTrigger("sit_back");
+        else animator.SetTrigger("sit_front");
         renderer.sortingOrder = layer;
         Vector3 pos = transform.position;
         pos.x = chairOnPos[chairNum - 1, 0]; pos.y = chairOnPos[chairNum - 1, 1];
@@ -276,9 +276,9 @@ public class CatController : MonoBehaviour {
         gameDirector.GetComponent<gameDirector>().emptySeatCnt++;
         Destroy(this.gameObject);
     }
-
+    /* deprecated
     public void infoPopup() {
         GameObject catInfoPopup = GameObject.Find("catInfoPopup");
         if(catInfoPopup) catInfoPopup.SetActive(true);
-    }
+    }*/
 }
