@@ -18,10 +18,10 @@ public class gameDirector : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         // inactivate popups
-        /* later...
+        
         catInfoPopup = GameObject.Find("catInfoPopup");
         catInfoPopup.SetActive(false);
-        */
+        
         isOccupied = new List<bool>();
         for (int i = 0; i < seatCnt; i++) isOccupied.Add(false);
         emptySeatCnt = seatCnt;
@@ -54,11 +54,10 @@ public class gameDirector : MonoBehaviour {
             //RaycastHit2D hitNPC = Physics2D.Raycast(ray.origin, ray.direction, distance, 1 << LayerMask.NameToLayer("npc"));
             //RaycastHit2D hitBubble = Physics2D.Raycast(ray.origin, ray.direction, distance, 1 << LayerMask.NameToLayer("bubble"));
 
-            if (hit && !uiOpen) {
+            if (hit) {
                 Debug.Log(hit.collider.name);
                 GameObject target = hit.collider.gameObject;
 
-                // deprecated
                 target.GetComponent<CatController>().infoPopup();
                 uiOpen = true; uiClosedFlag = false;
                 catInfoPopup.SetActive(true);

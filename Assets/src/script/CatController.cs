@@ -276,7 +276,6 @@ public class CatController : MonoBehaviour {
         gameDirector.GetComponent<gameDirector>().emptySeatCnt++;
         Destroy(this.gameObject);
     }
-    // deprecated
     public void infoPopup() {
         GameObject catInfoPopup = GameObject.Find("catInfoPopup");
         if(catInfoPopup) catInfoPopup.SetActive(true);
