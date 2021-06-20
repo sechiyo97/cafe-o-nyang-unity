@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/cafe1.unity
+    guid: 391a810349ff54b4db20619f8900a0ef
   m_configObjects: {}

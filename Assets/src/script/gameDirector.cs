@@ -58,10 +58,10 @@ public class gameDirector : MonoBehaviour {
                 Debug.Log(hit.collider.name);
                 GameObject target = hit.collider.gameObject;
 
-                /* deprecated
+                // deprecated
                 target.GetComponent<CatController>().infoPopup();
                 uiOpen = true; uiClosedFlag = false;
-                catInfoPopup.SetActive(true);*/
+                catInfoPopup.SetActive(true);
             } else if (uiClosedFlag) { uiOpen = false; }
         }
     }

@@ -27,9 +27,9 @@ public class cameraMove : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
         // swipe
         if (Input.touchCount == 1) {
+            Debug.Log("touched...");
             if (Input.GetMouseButtonDown(0)) {
                 this.hold = true;
                 this.startPos = Input.mousePosition;
@@ -37,6 +37,7 @@ public class cameraMove : MonoBehaviour {
                 this.hold = false;
             }
             if (this.hold) {
+                Debug.Log("moved..hold...");
                 this.curPos = Input.mousePosition;
                 transform.Translate((cam.orthographicSize / 5) * vscale * (startPos - curPos));
                 if (outside()) transform.Translate((cam.orthographicSize/5) * vscale * (curPos - startPos));

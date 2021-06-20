@@ -9,10 +9,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -60,45 +58,45 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9310}
+      Script: {instanceID: 9314}
     - Class: 114
-      Script: {instanceID: 9356}
+      Script: {instanceID: 9360}
     - Class: 114
-      Script: {instanceID: 9358}
+      Script: {instanceID: 9362}
     - Class: 114
-      Script: {instanceID: 9394}
+      Script: {instanceID: 9398}
     - Class: 114
-      Script: {instanceID: 9410}
+      Script: {instanceID: 9414}
     - Class: 114
-      Script: {instanceID: 9438}
+      Script: {instanceID: 9442}
     - Class: 114
-      Script: {instanceID: 9440}
+      Script: {instanceID: 9444}
     - Class: 114
-      Script: {instanceID: 9446}
+      Script: {instanceID: 9450}
     - Class: 114
-      Script: {instanceID: 9452}
+      Script: {instanceID: 9456}
     - Class: 114
-      Script: {instanceID: 9460}
+      Script: {instanceID: 9464}
     - Class: 114
-      Script: {instanceID: 9496}
+      Script: {instanceID: 9500}
     - Class: 114
-      Script: {instanceID: 9498}
+      Script: {instanceID: 9502}
     - Class: 114
-      Script: {instanceID: 9698}
+      Script: {instanceID: 9702}
     - Class: 114
-      Script: {instanceID: 10076}
+      Script: {instanceID: 10080}
     - Class: 114
-      Script: {instanceID: 10122}
+      Script: {instanceID: 10126}
     - Class: 114
-      Script: {instanceID: 10204}
+      Script: {instanceID: 10208}
     - Class: 114
-      Script: {instanceID: 10240}
+      Script: {instanceID: 10244}
     - Class: 114
-      Script: {instanceID: 10334}
+      Script: {instanceID: 10338}
     - Class: 114
-      Script: {instanceID: 10508}
+      Script: {instanceID: 10512}
     - Class: 114
-      Script: {instanceID: 10720}
+      Script: {instanceID: 10724}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -915,4 +913,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/cafe1.unity
-  playerPath: C:/dev/cafeOnyang/cafeONyang.apk
+  playerPath: /Users/day/dev/cafeOnyang/test_build.apk
